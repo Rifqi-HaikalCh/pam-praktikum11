@@ -49,9 +49,9 @@
                 <ImageView
                     android:id="@+id/ivLostFoundDetailCover"
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
-                    android:paddingBottom="5dp"
+                    android:layout_height="169dp"
                     android:paddingTop="12dp"
+                    android:paddingBottom="5dp"
                     app:srcCompat="@drawable/picture" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -90,7 +90,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="27dp"
+                        android:layout_marginTop="8dp"
                         android:text="Status: "
                         app:layout_constraintBottom_toTopOf="@+id/tvLostFoundDetailDate"
                         app:layout_constraintStart_toStartOf="parent"
@@ -128,7 +128,7 @@
                         android:id="@+id/tvStatusDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="27dp"
+                        android:layout_marginTop="8dp"
                         android:text="TextView"
                         android:textStyle="bold"
                         app:layout_constraintStart_toEndOf="@+id/tvStatus"

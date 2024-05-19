@@ -1,6 +1,7 @@
 package com.ifs21002.lostfounds.presentation.lostfound
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
@@ -15,6 +16,7 @@ import com.ifs21002.lostfounds.data.remote.MyResult
 import com.ifs21002.lostfounds.presentation.ViewModelFactory
 
 class LostFoundManageActivity : AppCompatActivity() {
+    private var imageUri : Uri? = null
     private lateinit var binding: ActivityLostfoundManageBinding
     private val viewModel by viewModels<LostFoundViewModel> {
         ViewModelFactory.getInstance(this)
@@ -46,6 +48,7 @@ class LostFoundManageActivity : AppCompatActivity() {
     ) { result ->
         if (result.resultCode == RESULT_OK) {
             val selectedImageUri = result.data?.data
+            imageUri = selectedImageUri
             // Lakukan sesuatu dengan URI gambar yang dipilih
             // Misalnya, tampilkan gambar tersebut di ImageView
             binding.ivSelectedImage.setImageURI(selectedImageUri)
@@ -90,12 +93,12 @@ class LostFoundManageActivity : AppCompatActivity() {
                     return@setOnClickListener
                 }
 
-                observePostLostFound(title, description, status)
+                observePostLostFound(title, description, status, imageUri)
             }
         }
     }
 
-    private fun observePostLostFound(title: String, description: String, status: String) {
+    private fun observePostLostFound(title: String, description: String, status: String, uri: Uri?) {
         viewModel.postLostFound(title, description, status).observeOnce { result ->
             when (result) {
                 is MyResult.Loading -> {
